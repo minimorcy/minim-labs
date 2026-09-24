@@ -1,1 +1,31 @@
 @import "tailwindcss";
+@import "@fontsource/ubuntu/400.css";
+@import "@fontsource/ubuntu/500.css";
+@import "@fontsource/ubuntu/700.css";
+
+@theme {
+	--font-sans: "Ubuntu", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+		"Noto Sans", Arial, sans-serif;
+}
+
+#nickname {
+	background: #0a313e;
+	background-image: linear-gradient(
+		to right,
+		#00d8ff,
+		#77ddff,
+		#abe2ff,
+		#d0e8ff,
+		#eaf0ff,
+		#eaf0ff,
+		#eaf0ff,
+		#eaf0ff,
+		#d0e8ff,
+		#abe2ff,
+		#77ddff,
+		#00d8ff
+	);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	background-clip: text;
+}

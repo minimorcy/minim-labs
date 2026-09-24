@@ -1,15 +1,18 @@
 ---
 import "../styles/global.css";
+import { languages, type Lang } from "../i18n/ui";
+import { getLocalizedPath } from "../i18n/utils";
 
 interface Props {
   title: string;
   description?: string;
+  lang: Lang;
 }
 
-const { title, description = "Hub de aplicaciones de minim-labs." } = Astro.props;
+const { title, description = "Hub de aplicaciones de minim-labs.", lang } = Astro.props;
 ---
 
-<html lang="es">
+<html lang={lang}>
 	<head>
 		<meta charset="utf-8" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -20,6 +23,19 @@ const { title, description = "Hub de aplicaciones de minim-labs." } = Astro.prop
 		<title>{title}</title>
 	</head>
 	<body class="min-h-screen bg-neutral-950 text-neutral-100 antialiased">
+		<nav class="mx-auto flex max-w-5xl justify-end gap-3 px-6 pt-6 font-mono text-xs text-neutral-500">
+			{Object.entries(languages).map(([code, label]) => (
+				<a
+					href={getLocalizedPath(code as Lang)}
+					class:list={[
+						"transition-colors hover:text-neutral-200",
+						code === lang ? "text-neutral-200 underline underline-offset-4" : undefined,
+					]}
+				>
+					{label}
+				</a>
+			))}
+		</nav>
 		<slot />
 	</body>
 </html>

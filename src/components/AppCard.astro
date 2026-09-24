@@ -1,12 +1,15 @@
 ---
 import type { AppEntry } from "../data/apps";
 import { appUrl } from "../data/apps";
+import { useTranslations, type Lang } from "../i18n/utils";
 
 interface Props {
   app: AppEntry;
+  lang: Lang;
 }
 
-const { app } = Astro.props;
+const { app, lang } = Astro.props;
+const t = useTranslations(lang);
 const url = appUrl(app.slug);
 const isLive = app.status === "live";
 ---
@@ -34,13 +37,22 @@ const isLive = app.status === "live";
 						: "bg-neutral-800 text-neutral-400",
 				]}
 			>
-				{isLive ? "Activo" : "Próximamente"}
+				{isLive ? t("status.live") : t("status.soon")}
 			</span>
 		</div>
-		<p class="mt-2 text-sm leading-relaxed text-neutral-400">{app.description}</p>
+		<p class="mt-2 text-sm leading-relaxed text-neutral-400">{app.description[lang]}</p>
 	</div>
-	<div class="mt-6 flex items-center justify-between text-xs text-neutral-500">
-		<span class="font-mono">{app.slug}.minim-labs.dev</span>
+	<div class="mt-6 flex items-center justify-between text-xs">
+		<span
+			class:list={[
+				"font-mono",
+				isLive
+					? "text-neutral-400 underline underline-offset-4 decoration-neutral-700 group-hover:text-neutral-200 group-hover:decoration-neutral-500"
+					: "text-neutral-500",
+			]}
+		>
+			{app.slug}
+		</span>
 		{isLive && (
 			<span class="text-neutral-400 transition-transform group-hover:translate-x-0.5">
 				&rarr;
