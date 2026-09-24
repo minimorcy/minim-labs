@@ -1,0 +1,50 @@
+---
+import type { AppEntry } from "../data/apps";
+import { appUrl } from "../data/apps";
+
+interface Props {
+  app: AppEntry;
+}
+
+const { app } = Astro.props;
+const url = appUrl(app.slug);
+const isLive = app.status === "live";
+---
+
+<a
+	href={isLive ? url : undefined}
+	target={isLive ? "_blank" : undefined}
+	rel={isLive ? "noopener noreferrer" : undefined}
+	aria-disabled={!isLive}
+	class:list={[
+		"group relative flex flex-col justify-between rounded-2xl border border-neutral-800 bg-neutral-900/60 p-6 transition-colors",
+		isLive
+			? "hover:border-neutral-600 hover:bg-neutral-900 cursor-pointer"
+			: "cursor-default opacity-60",
+	]}
+>
+	<div>
+		<div class="flex items-start justify-between gap-3">
+			<h2 class="text-lg font-medium text-neutral-100">{app.name}</h2>
+			<span
+				class:list={[
+					"shrink-0 rounded-full px-2.5 py-0.5 text-xs font-medium",
+					isLive
+						? "bg-emerald-500/10 text-emerald-400"
+						: "bg-neutral-800 text-neutral-400",
+				]}
+			>
+				{isLive ? "Activo" : "Próximamente"}
+			</span>
+		</div>
+		<p class="mt-2 text-sm leading-relaxed text-neutral-400">{app.description}</p>
+	</div>
+	<div class="mt-6 flex items-center justify-between text-xs text-neutral-500">
+		<span class="font-mono">{app.slug}.minim-labs.dev</span>
+		{isLive && (
+			<span class="text-neutral-400 transition-transform group-hover:translate-x-0.5">
+				&rarr;
+			</span>
+		)}
+	</div>
+</a>
