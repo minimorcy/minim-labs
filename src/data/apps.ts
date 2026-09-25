@@ -21,6 +21,15 @@ export const apps: AppEntry[] = [
     status: "live",
   },
   {
+    name: "CeArt",
+    slug: "ceart.minim-labs.app",
+    description: {
+      es: "Un juego de palabras en el que ganáis cuando vuestras mentes coinciden.",
+      en: "A word game where you win when your thoughts match.",
+    },
+    status: "live",
+  },
+  {
     name: "ARC Raiders Database",
     slug: "arc-raiders-database.minim-labs.app",
     description: {
@@ -28,16 +37,7 @@ export const apps: AppEntry[] = [
       en: "A simple database for the game ARC Raiders where you can view items, their recycling options, and how they're created. It also includes missions and camp upgrades.",
     },
     status: "live",
-  },
-  {
-    name: "App Three",
-    slug: "app3",
-    description: {
-      es: "xxxxxxxxxxxxxxxxxxxxxxxxx",
-      en: "xxxxxxxxxxxxxxxxxxxxxxxxx",
-    },
-    status: "soon",
-  },
+  }
 ];
 
 export function appUrl(slug: string): string {
