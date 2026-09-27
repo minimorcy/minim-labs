@@ -30,7 +30,7 @@ export const apps: AppEntry[] = [
       es: "Un juego de palabras en el que ganáis cuando vuestras mentes coinciden.",
       en: "A word game where you win when your thoughts match.",
     },
-    status: "live",
+    status: "building",
   },
   {
     name: "ARC Raiders Database",
