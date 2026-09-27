@@ -11,6 +11,7 @@ export const ui = {
     "hub.title": "Hub de aplicaciones",
     "hub.subtitle": "Punto de entrada a los proyectos alojados bajo subdominios de minim-labs.app.",
     "status.live": "Activo",
+    "status.building": "En construcción",
     "status.soon": "Próximamente",
   },
   en: {
@@ -18,6 +19,7 @@ export const ui = {
     "hub.title": "Application hub",
     "hub.subtitle": "Entry point to the projects hosted under minim-labs.app subdomains.",
     "status.live": "Live",
+    "status.building": "Under construction",
     "status.soon": "Coming soon",
   },
 } as const;

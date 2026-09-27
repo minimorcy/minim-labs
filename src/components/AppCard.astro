@@ -11,17 +11,23 @@ interface Props {
 const { app, lang } = Astro.props;
 const t = useTranslations(lang);
 const url = appUrl(app.slug);
-const isLive = app.status === "live";
+const isOnline = app.status !== "soon";
+
+const statusStyles = {
+	live: "bg-emerald-500/10 text-emerald-400",
+	building: "bg-amber-500/10 text-amber-400",
+	soon: "bg-neutral-800 text-neutral-400",
+} as const;
 ---
 
 <a
-	href={isLive ? url : undefined}
-	target={isLive ? "_blank" : undefined}
-	rel={isLive ? "noopener noreferrer" : undefined}
-	aria-disabled={!isLive}
+	href={isOnline ? url : undefined}
+	target={isOnline ? "_blank" : undefined}
+	rel={isOnline ? "noopener noreferrer" : undefined}
+	aria-disabled={!isOnline}
 	class:list={[
 		"group relative flex flex-col justify-between rounded-2xl border border-neutral-800 bg-neutral-900/60 p-6 transition-colors",
-		isLive
+		isOnline
 			? "hover:border-neutral-600 hover:bg-neutral-900 cursor-pointer"
 			: "cursor-default opacity-60",
 	]}
@@ -32,12 +38,10 @@ const isLive = app.status === "live";
 			<span
 				class:list={[
 					"shrink-0 rounded-full px-2.5 py-0.5 text-xs font-medium",
-					isLive
-						? "bg-emerald-500/10 text-emerald-400"
-						: "bg-neutral-800 text-neutral-400",
+					statusStyles[app.status],
 				]}
 			>
-				{isLive ? t("status.live") : t("status.soon")}
+				{t(`status.${app.status}` as const)}
 			</span>
 		</div>
 		<p class="mt-2 text-sm leading-relaxed text-neutral-400">{app.description[lang]}</p>
@@ -46,14 +50,14 @@ const isLive = app.status === "live";
 		<span
 			class:list={[
 				"font-mono",
-				isLive
+				isOnline
 					? "text-neutral-400 underline underline-offset-4 decoration-neutral-700 group-hover:text-neutral-200 group-hover:decoration-neutral-500"
 					: "text-neutral-500",
 			]}
 		>
 			{app.slug}
 		</span>
-		{isLive && (
+		{isOnline && (
 			<span class="text-neutral-400 transition-transform group-hover:translate-x-0.5">
 				&rarr;
 			</span>

@@ -5,7 +5,10 @@ export interface AppEntry {
     es: string;
     en: string;
   };
-  status: "live" | "soon";
+  /**
+   * live: online and finished · building: online but still under construction · soon: not deployed yet
+   */
+  status: "live" | "building" | "soon";
   /** Technologies shown on the portfolio card */
   stack?: string[];
 }
