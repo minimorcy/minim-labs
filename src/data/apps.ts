@@ -24,6 +24,15 @@ export const apps: AppEntry[] = [
     status: "live",
   },
   {
+    name: "Metapulse",
+    slug: "metapulse.minim-labs.app",
+    description: {
+      es: "El meta de Pokémon Champions en tiempo real.",
+      en: "The Pokémon Champions meta in real time.",
+    },
+    status: "building",
+  },
+  {
     name: "CeArt",
     slug: "ceart.minim-labs.app",
     description: {
