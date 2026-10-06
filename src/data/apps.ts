@@ -30,7 +30,7 @@ export const apps: AppEntry[] = [
       es: "El meta de Pokémon Champions en tiempo real.",
       en: "The Pokémon Champions meta in real time.",
     },
-    status: "building",
+    status: "live",
   },
   {
     name: "CeArt",
