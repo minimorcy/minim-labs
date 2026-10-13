@@ -34,7 +34,7 @@ export const apps: AppEntry[] = [
   },
   {
     name: "Battle Lens",
-    slug: "battle-lens.minim-labs.app",
+    slug: "battlelens.minim-labs.app",
     description: {
       es: "Ficha instantánea del Pokémon rival para juegos de Pokémon en cualquier emulador de PC.",
       en: "Instant info card for your opponent in Pokémon games, on any PC emulator.",
