@@ -51,6 +51,15 @@ export const apps: AppEntry[] = [
     status: "building",
   },
   {
+    name: "Fishduction",
+    slug: "fishduction.minim-labs.app",
+    description: {
+      es: "Juego arcade de pesca alienígena para móvil: abduce monstruos y derríbalos a tiros en el aire.",
+      en: "Alien fishing arcade game for mobile: abduct monsters and blast them out of the sky.",
+    },
+    status: "soon",
+  },
+  {
     name: "ARC Raiders Database",
     slug: "arc-raiders-database.minim-labs.app",
     description: {
